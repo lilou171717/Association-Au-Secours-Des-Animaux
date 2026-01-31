@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Au Secours Des Animaux - Association de sauvetage, soins, adoptions et actions solidaires pour les animaux dans les Hautes-Alpes.">
+<title>Au Secours Des Animaux</title>
+
+<!-- ====== STYLES ====== -->
+<style>
+/* RESET & BASE */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Segoe UI', Arial, sans-serif; line-height:1.6; color:#333; background:#fdfdfd; scroll-behavior:smooth;}
+img {max-width:100%; display:block;}
+a {text-decoration:none;}
+
+/* NAVIGATION */
+nav {
+  position: fixed; top:0; left:0; right:0;
+  background:#3cc4b8; display:flex; justify-content:space-between; align-items:center;
+  padding:0.8rem 2rem; z-index:1000; flex-wrap:wrap; transition:0.3s;
+}
+nav .logo {color:white; font-weight:bold; font-size:1.3rem;}
+nav ul {list-style:none; display:flex; gap:15px; flex-wrap:wrap;}
+nav ul li a {color:white; padding:0.5rem 0.8rem; font-weight:bold; border-radius:5px; transition:0.3s;}
+nav ul li a:hover {background:#6af3e8;}
+
+/* HEADER */
+header {
+  background:url('photo/logo1.jpg') center/cover no-repeat;
+  color:white; text-align:center; padding:120px 20px 80px; position:relative; margin-top:60px;
+  overflow:hidden;
+}
+header::after {
+  content:""; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4);
+}
+header h1, header p, header a {position:relative; z-index:2;}
+header h1 {font-size:3rem; margin-bottom:15px;}
+header p {font-size:1.2rem; margin-bottom:25px;}
+.btn {display:inline-block; padding:12px 25px; background:#3cc4b8; color:white; font-weight:bold; border-radius:30px; transition:0.3s;}
+.btn:hover {background:#6af3e8; transform:scale(1.05);}
+
+/* SECTIONS */
+section {padding:80px 20px; max-width:1100px; margin:auto; opacity:0; transform:translateY(30px); transition:1s;}
+section.visible {opacity:1; transform:translateY(0);}
+section:nth-child(even) {background:#f4f4f4;}
+.section-title {text-align:center; font-size:2.2rem; margin-bottom:10px; color:#333;}
+.section-subtitle {text-align:center; font-size:1.1rem; color:#666; margin-bottom:50px;}
+
+/* GRILLES & CARTES */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.card {background:white; border-radius:15px; box-shadow:0 6px 18px rgba(0,0,0,0.1); overflow:hidden; transition:transform 0.3s, box-shadow 0.3s;}
+.card:hover {transform:translateY(-8px); box-shadow:0 12px 28px rgba(0,0,0,0.18);}
+.card img {height:200px; object-fit:cover;}
+.card-content {padding:20px;}
+.card-content h4 {margin-bottom:10px; color:#222;}
+.card-content p {color:#555; line-height:1.4;}
+
+/* ONGLETS ADOPTION */
+.tabs {margin-bottom:30px; text-align:center;}
+.tab-btn {background:#eee; border:none; padding:10px 20px; margin:0 5px; cursor:pointer; border-radius:8px; font-weight:bold; transition:0.3s;color: #333;}
+.tab-btn.active, .tab-btn:hover {background:#6af3e8; color:white;}
+.tab-content {display:none;}
+.tab-content.active {display:block;}
+
+/* SECTION AIDER */
+#aider .card-content {text-align:center;}
+#aider .btn {margin-top:10px;}
+
+/* FORMULAIRES */
+form {max-width:500px; margin:auto; background:white; padding:30px; border-radius:15px; box-shadow:0 6px 18px rgba(0,0,0,0.1);}
+input, select, textarea {width:100%; padding:12px; margin-bottom:15px; border:1px solid #ccc; border-radius:8px;}
+textarea {resize:none; height:120px;}
+button {width:100%; padding:12px; border:none; border-radius:30px; background:#3cc4b8; color:white; font-weight:bold; cursor:pointer; transition:0.3s;}
+button:hover {background:#6af3e8; transform:scale(1.03);}
+
+/* RÉSEAUX SOCIAUX */
+#reseaux a {transition:transform 0.3s;}
+#reseaux a:hover {transform:scale(1.2);}
+
+/* FOOTER */
+footer {background:#333; color:white; text-align:center; padding:20px; margin-top:40px;}
+footer a {color:#90c695;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav {flex-direction:column; gap:10px;}
+  header h1 {font-size:2.2rem;}
+  header p {font-size:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">Au Secours Des Animaux</div>
+  <ul>
+    <li><a href="#presentation">Présentation</a></li>
+    <li><a href="#actions">Actions</a></li>
+    <li><a href="#adoptions">Adoptions</a></li>
+    <li><a href="#aider">Aider</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<header>
+<h1>Au Secours Des Animaux</h1>
+  <p>Sauvetage, soins et adoptions pour les animaux dans le besoin</p>
+  <a href="#aider" class="btn">Nous soutenir</a>
+</header>
+
+<!-- PRÉSENTATION -->
+<section id="presentation" class="visible">
+  <h2 class="section-title">Qui sommes-nous ?</h2>
+  <p class="center">Nous sommes une petite association toute nouvelle, passionnée par
+les animaux et sensible à leur cause. Nous avons créé cette
+organisation pour venir en aide à nos amis à quatre pattes. Basée à
+Laragne-Montéglin, notre mission est de stériliser les chats errants
+afin de prévenir leur surpopulation, tout en assurant leur
+alimentation, leurs soins et leur protection. Nous travaillons
+également à les sociabiliser pour leur trouver une famille aimante qui
+prendra soin d'eux tout au long de leur vie.</p>
+</section>
+
+<!-- ACTIONS -->
+<section id="actions" class="visible">
+  <h2 class="section-title">Nos actions</h2>
+  <div class="grid">
+         <div class="card">
+      <img src="photo/sterilisation.jpg" alt="Adoption">
+      <div class="card-content">
+        <h4>Stérilisations</h4>
+        <p>Stériliser les chats errants pour éviter la surpopulation.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="photo/sauvetage.jpg" alt="Sauvetage">
+      <div class="card-content">
+        <h4>Sauvetages</h4>
+        <p>Recueillir les animaux abandonnés et leur fournir des soins adaptés.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="photo/soin.jpg" alt="Soins">
+      <div class="card-content">
+        <h4>Soins</h4>
+        <p>Assurer un suivi vétérinaire et un bien-être pour tous les animaux.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="photo/adoption.jpg" alt="Adoption">
+      <div class="card-content">
+        <h4>Adoptions</h4>
+        <p>Aider les animaux à trouver une famille aimante et responsable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADOPTIONS COMPLÈTES -->
+
+<section id="adoptions" class="visible">
+  <h2 class="section-title">Nos animaux à l’adoption 🐾</h2>
+  <p class="section-subtitle">Offrez-leur une seconde chance en leur donnant une famille ❤️</p>
+
+  <!-- Onglets -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="chats">Chats</button>
+    <button class="tab-btn" data-tab="chatons">Chatons</button>
+    <button class="tab-btn" data-tab="chiens">Chiens</button>
+  </div>
+
+  <!-- CHATS -->
+  <div class="tab-content active" id="chats">
+    <div class="grid">
+      <div class="card">
+        <img src="photochat/simon.jpg" alt="Chat 1">
+        <div class="card-content"><h4>Simon</h4><p>Âge : 4 ans<br>Mâle<br><h4>Urgence, Adoption</h4></p><br><p>Ce petit cœur courageux vit avec un mégaœsophage, une affection qui nécessite une nourriture liquide adaptée. Sa maîtresse doit être hospitalisée, et il a besoin d’une famille patiente et aimante pour veiller sur lui. Aidez-le à trouver un foyer plein de tendresse.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochat/eren.jpg" alt="Chat 4">
+        <div class="card-content"><h4>Eren</h4><p>Âge : 2 ans<br>Mâle<br><h4>Adopté</h4></p><br><p>Eren a été pris en charge par l’association en même temps que Mimi, suite au déménagement de leur ancien maître. C’est un gentil compagnon.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochat/lucky.jpg" alt="Chat 5">
+        <div class="card-content"><h4>Lucky</h4><p>Âge : 2 ans<br>Femelle<br><h4>Adoptée</h4></p><br><p>Lucky a été recueillie dans un état de grande maigreur (2,3 kg) et souffrait d’une gale des oreilles. Elle reçoit actuellement les soins nécessaires et reprendra du poids avant d’être proposée à l’adoption. Une fois rétablie, elle fera le bonheur de sa future famille.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochat/hope.jpg" alt="Chat 6">
+        <div class="card-content"><h4>Hope</h4><p>Âge : 8 ans<br>Femelle<br><h4>Adoptée</h4></p><br><p>Hope a été sauvée dans un état très négligé : atteinte de gale des oreilles, elle avait 500 g de bourres retirées et ne pesait que 2,5 kg. Elle se remet doucement grâce aux soins et à l’attention de l’association. Lorsqu’elle aura retrouvé toute sa vitalité, elle sera proposée à l’adoption pour enfin connaître le confort et l’amour qu’elle mérite.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHATONS -->
+  <div class="tab-content" id="chatons">
+    <div class="grid">
+      <div class="card">
+        <img src="photochaton/oreo.jpg" alt="Chaton 1">
+        <div class="card-content"><h4>Oreo</h4><p>Âge : 3 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Petit Oreo, fils de Mimi et Eren, a été recueilli après le déménagement de son maître. C’est un chaton au pelage doux et au cœur tendre, toujours en quête de caresses et d’attention.
+Curieux, vif et affectueux, il a vite su charmer tout le monde par sa douceur et son caractère équilibré. Oreo a trouvé sa famille pour la vie, et profite désormais de journées pleines de câlins et de jeux. </p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/baloo.jpg" alt="Chaton 2">
+        <div class="card-content"><h4>Baloo</h4><p>Âge : 3 mois et demi<br>Mâle<br><h4>Adopté</h4></p><br><p>Baloo est un petit cœur plein de douceur, sauvé d’un site dangereux où les chats servaient tristement de « ralentisseurs ». Ce départ difficile dans la vie ne l’a pas empêché de garder une grande sensibilité et une tendresse infinie.
+C’est un chaton calme et observateur, un peu réservé au premier abord, mais qui se révèle être un véritable amour dès qu’il accorde sa confiance. Il adore les caresses, les moments paisibles et la chaleur d’une présence bienveillante.
+Avec un peu de patience et beaucoup d’amour, Baloo s’épanouira rapidement. Il rêve d’un foyer doux et tranquille, où il pourra se sentir en sécurité et donner tout l’amour qu’il garde précieusement dans son petit cœur.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/fox.jpg" alt="Chaton 3">
+        <div class="card-content"><h4>Fox</h4><p>Âge : 3 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Fox, le frère d’Oreo, a lui aussi été recueilli après un abandon. Petit chaton vif et joyeux, il adore jouer, courir et grimper, mais reste toujours prêt à venir se lover pour un moment de tendresse.
+C’est un chat au tempérament doux et équilibré, qui a su s’adapter rapidement à la vie de famille. Adopté par des personnes aimantes, il coule aujourd’hui des jours heureux entouré d’amour.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/prune.jpg" alt="Chaton 4">
+        <div class="card-content"><h4>Prune</h4><p>Âge : 5 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Prune est une adorable jeune minette pleine d’énergie et de curiosité. Sauvée de la rue avec ses deux frères, elle a très vite montré une grande envie de vivre et de jouer.
+C’est une petite boule de vie, toujours prête à courir après une balle ou à grimper sur le premier arbre venu. Mais sous cette vitalité se cache un grand besoin de tendresse. Prune adore les câlins et la compagnie humaine une fois qu’elle se sent en confiance.
+Elle attend aujourd’hui une famille aimante, prête à lui offrir un foyer chaleureux et la stabilité qu’elle mérite. En retour, Prune vous comblera de ronrons et de moments de joie.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/sisi.jpg" alt="Chaton 5">
+        <div class="card-content"><h4>Sisi</h4><p>Âge : 3 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Petite Sisi a déjà vécu bien des épreuves. Retrouvée sur un site dangereux, elle a été attaquée par un chien et a perdu un bout de queue. Malgré tout, cette minuscule guerrière garde la tête haute et le cœur grand ouvert.
+Courageuse, douce et incroyablement affectueuse, Sisi cherche simplement une famille qui saura la rassurer et lui offrir la sécurité qu’elle n’a jamais connue. Elle aime se blottir dans les bras et ronronner dès qu’elle sent la chaleur d’une main amie.
+Offrez-lui la chance d’une belle vie : Sisi vous le rendra par un amour sans limite. </p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/canelle.jpg" alt="Chaton 6">
+        <div class="card-content"><h4>Canelle</h4><p>Âge : 6 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Canelle est un petit trésor élevé au biberon après la disparition de sa maman. Entouré de douceur depuis son plus jeune âge, il est devenu un chaton câlin, sociable et incroyablement tendre.
+Toujours prêt pour un moment de jeu ou un câlin, Canelle a conquis le cœur de tous ceux qui l’ont rencontré. Aujourd’hui, il a trouvé sa famille pour la vie, et profite enfin de la chaleur d’un foyer rempli d’amour.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/twix.jpg" alt="Chaton 7">
+        <div class="card-content"><h4>Astrid</h4><p>Âge : 5 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Astrid est une jeune minette qui a connu la rue avant d’être sauvée. D’abord craintive, elle a peu à peu laissé place à une chatte douce, câline et pleine de curiosité.
+Grâce à la patience et à la bienveillance de sa famille d’accueil, Astrid a appris à faire confiance. Aujourd’hui, elle est adoptée et profite d’une belle vie paisible, entourée d’amour et de sécurité.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/moustache.jpg" alt="Chaton 8">
+        <div class="card-content"><h4>Étoile</h4><p>Âge : 5 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Trouvé devant des poubelles avec son frère Coco, Étoile brille par sa gentillesse et sa joie de vivre. Ce chaton plein d’amour adore les câlins et cherche toujours le contact humain.
+Adopté par une famille aimante, il profite aujourd’hui d’une vie heureuse où il peut ronronner à volonté.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/rajah.jpg" alt="Chaton 10">
+        <div class="card-content"><h4>Rajah</h4><p>Âge : 3 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Petit Rajah a été trouvé sur un site dangereux à tout juste un mois. Malgré ce départ difficile, il a gardé une énergie débordante et une grande tendresse.
+Il a su conquérir le cœur de sa famille adoptive grâce à son courage et à sa douceur. Aujourd’hui, il vit paisiblement entouré d’amour et de sécurité.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/coco.jpg" alt="Chaton 11">
+        <div class="card-content"><h4>Coco</h4><p>Âge : 6 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Coco a été découvert avec son frère Étoile, blotti près des poubelles. C’est un chaton joyeux, câlin et très sociable. Il aime jouer, courir et faire des câlins sans modération.
+Adopté depuis, il profite d’une belle vie de famille, remplie de douceur et de ronrons.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/cacao.jpg" alt="Chaton 12">
+        <div class="card-content"><h4>cacao</h4><p>Âge : 6 mois<br>Mâle<br><h4>Adoptée</h4></p><br><p>Cacao porte bien son nom : doux, réconfortant et plein de chaleur ! Sauvé de la rue, il s’est révélé être une véritable boule d’amour. Toujours prêt à venir chercher des câlins, il ronronne avec reconnaissance dès qu’on lui accorde un peu d’attention.
+C’est un chat sociable, joyeux et affectueux, qui aime autant jouer que se prélasser au soleil. Son regard pétillant reflète toute la gentillesse qu’il porte en lui.
+Cacao attend maintenant une famille aimante pour partager sa tendresse et vivre une vie remplie de bonheur et de ronrons. </p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/nougat.jpg" alt="Chaton 13">
+        <div class="card-content"><h4>nougat</h4><p>Âge : 5 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Nougat est une jeune minette au caractère doux et joyeux. Sauvée de la rue alors qu’elle cherchait simplement un peu de chaleur, elle s’est rapidement adaptée à la vie en famille d’accueil, découvrant avec émerveillement le confort et la tendresse des humains.
+C’est une petite chatte vive, curieuse et joueuse, qui aime se blottir pour faire la sieste après une bonne séance de jeux. Nougat est pleine de vie et de douceur, toujours en quête de câlins et de compagnie.
+Elle attend aujourd’hui sa famille pour la vie — un foyer aimant où elle pourra grandir, jouer et ronronner sans jamais craindre de retourner dehors. </p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/bandit.jpg" alt="Chaton 14">
+        <div class="card-content"><h4>Bandit</h4><p>Âge : 5 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Bandit, malgré son nom espiègle, est un vrai tendre au grand cœur. Retrouvé dehors avec sa sœur et son frère, il a su surmonter les difficultés avec une force incroyable.
+Sous son air un peu timide se cache un chaton plein de douceur et de curiosité.
+Il adore jouer, surtout avec ses copains chats, et se montre très affectueux avec ceux qui prennent le temps de le connaître. Bandit a besoin d’un foyer calme et patient, qui saura lui offrir la sécurité et la tendresse dont il rêve.
+Une fois sa confiance gagnée, il devient un vrai petit pot de colle rempli d’amour.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/bil.jpg" alt="Chaton 15">
+        <div class="card-content"><h4>bil</h4><p>Âge : 5 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Bil est un petit chaton au regard tendre et au cœur sensible. Sauvé avec sa fratrie, il a encore besoin d’un peu de temps pour se sentir complètement en confiance.
+C’est un chat discret, observateur, qui avance à son rythme — mais une fois rassuré, il se montre d’une douceur touchante.
+Bil a besoin d’une famille patiente et bienveillante, prête à lui offrir un foyer stable et rempli d’amour. Avec le temps, il saura rendre cet amour au centuple à travers des ronrons sincères et une complicité unique.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/bounty.jpeg" alt="Chaton 18">
+        <div class="card-content"><h4>Bounty</h4><p>Âge : 4 mois<br>Mâle<br><h4>À l'adoption</h4></p><br><p>Bounty est une petite boule d’amour pleine de curiosité. Sorti de la rue avec ses frères et sœurs, il découvre la vie avec émerveillement.
+Très joueur, gourmand et câlin, il fera le bonheur d’une famille douce et attentionnée. Encore un peu jeune, il sera bientôt prêt à rejoindre son foyer pour la vie.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/caro.jpg" alt="Chaton 19">
+        <div class="card-content"><h4>Macaron</h4><p>Âge : 2 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Trouvée seule dans la montagne, Caro est une petite minette au grand cœur. Malgré son jeune âge, elle se montre déjà douce, confiante et très affectueuse.
+Elle adore les câlins, ronronne facilement et s’attache vite à ceux qui prennent soin d’elle. Caro attend avec impatience de trouver une famille qui lui offrira toute la tendresse qu’elle mérite. </p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/eclipse.jpg" alt="Chaton 21">
+        <div class="card-content"><h4>Éclipse</h4><p>Âge : 3 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Éclipse est un adorable petit chat plein de caractère. Sorti de la rue, il s’est révélé affectueux et confiant, mais garde son petit tempérament affirmé !
+C’est un chaton très câlin, qui adore jouer et se blottir après s’être dépensé. Il attend avec impatience de trouver la famille qui partagera son énergie et son affection.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/lucifette.jpg" alt="Chaton 22">
+        <div class="card-content"><h4>Lucifette</h4><p>Âge : 5 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Lucifette est une petite minette pleine de charme et de tendresse. Sous ses airs discrets, se cache une chatte très affectueuse qui ne demande qu’à aimer et être aimée.
+Trouvée toute jeune, elle a grandi dans un environnement où la patience et la douceur ont fait des miracles.
+Lucifette aime les moments calmes, les câlins tranquilles et les regards bienveillants. Elle a besoin d’un foyer doux, sans agitation, où elle pourra s’épanouir à son rythme et se sentir pleinement en sécurité.
+Avec un peu de temps et beaucoup d’amour, elle révélera toute la délicatesse et la tendresse qui la rendent si attachante.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/moon.jpg" alt="Chaton 23">
+        <div class="card-content"><h4>Moon</h4><p>Âge : 2 mois<br>Femelle<br><h4>Réservée</h4></p><br><p>Moon est une adorable chatonne pleine de tendresse. Très câline, elle adore être dans les bras et se laisse aller à de longs ronrons de bonheur.
+C’est une véritable boule d’amour qui rêve d’un foyer où elle pourra grandir en sécurité, entourée de douceur et d’affection. </p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/neige.jpg" alt="Chaton 24">
+        <div class="card-content"><h4>Neige</h4><p>Âge : 2 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Petit Neige a été trouvé dehors avec ses frères et sœurs. Sous son pelage clair se cache un cœur tout aussi pur : doux, affectueux et curieux.
+C’est un chaton calme et attachant, qui adore les câlins et les moments de jeu. Il attend une famille pour la vie, prête à l’aimer comme il le mérite.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/orion.jpg" alt="Chaton 25">
+        <div class="card-content"><h4>Orion</h4><p>Âge : 2 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Orion est un petit chaton joueur et câlin, plein de joie de vivre. Il adore les séances de jeu et les moments de tendresse tout autant.
+Très sociable et curieux, il s’attache vite à ceux qui s’occupent de lui. Orion rêve maintenant d’une famille aimante avec qui partager ses ronrons et ses câlins.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/perle.jpeg" alt="Chaton 26">
+        <div class="card-content"><h4>Perle</h4><p>Âge : 3 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Perle est une petite chatte aussi douce que précieuse. Sauvée de la rue avec ses frères, elle a su garder une nature calme et affectueuse.
+C’est une chatonne tendre, délicate et très câline, qui fera le bonheur d’un foyer aimant. Une vraie petite perle de douceur.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/venom.jpg" alt="Chaton 27">
+        <div class="card-content"><h4>Venom</h4><p>Âge : 2 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Petit Venom a été trouvé très malade, atteint d’un gros coryza à seulement un mois. Grâce à des soins et beaucoup d’amour, il s’est totalement remis et déborde maintenant d’énergie et de joie.
+C’est un filou courageux, joueur et câlin, sans aucune peur de la vie. Venom est un petit guerrier au grand cœur, prêt à aimer sans compter.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/guizmo.jpg" alt="Chaton 28">
+        <div class="card-content"><h4>Guizmo</h4><p>Âge : 2 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Guizmo est un chaton tranquille et attendrissant. Il aime les câlins, les moments de calme et la douceur d’une main qui le rassure.
+Très facile à vivre, il s’adapte vite et aime la compagnie. Guizmo est prêt à offrir tout son amour à la famille qui ouvrira son cœur pour lui.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/cerise.jpg" alt="Chaton 29">
+        <div class="card-content"><h4>Cerise</h4><p>Âge : 3 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Petite Cerise a été trouvée dans un tronc d’arbre avec sa sœur. Sauvée juste à temps, elle s’est révélée être une chatonne pleine de vie et de tendresse.
+Curieuse, joueuse et câline, elle adore les moments de complicité et les câlins dans les bras. Cerise est prête à croquer la vie à pleines pattes avec sa future famille.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/amande.jpg" alt="Chaton 30">
+        <div class="card-content"><h4>Amande</h4><p>Âge : 3 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Amande, la sœur de Cerise, est une petite boule de douceur. Tout comme sa sœur, elle a été sauvée dans un tronc d’arbre et découvre aujourd’hui la chaleur humaine avec émerveillement.
+Douce, affectueuse et sociable, Amande adore les caresses et les moments tranquilles. Elle attend sa famille pour la vie, prête à lui offrir un amour infini.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/tigresse.jpg" alt="Chaton 31">
+        <div class="card-content"><h4>Tigresse</h4><p>Âge : 5 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Tigresse et sa sœur Panthère ont été abandonnées dans un cabinet vétérinaire. Malgré ce départ difficile, Tigresse a vite montré sa force et son courage.
+Sous ses airs fiers se cache une minette pleine de tendresse, joueuse et proche des humains. Aujourd’hui, elle profite d’une belle vie dans sa famille aimante.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/panthere.jpg" alt="Chaton 32">
+        <div class="card-content"><h4>Panthère</h4><p>Âge : 5 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Panthère, sœur de Tigresse, a elle aussi été abandonnée très jeune. Douce et sensible, elle s’est rapidement adaptée à la vie de famille, profitant des câlins et du confort d’un vrai foyer.
+Aujourd’hui, elle est comblée d’amour et vit paisiblement auprès de ses adoptants.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/ronron.jpg" alt="Chaton 34">
+        <div class="card-content"><h4>Ronron</h4><p>Âge : 6 mois<br>Mâle<br><h4>Adopté</h4></p><br><p>Élevé au biberon après la disparition de sa maman, Ronron a grandi entouré d’amour humain, ce qui en fait un chaton profondément attaché aux gens. Il porte magnifiquement son nom : il ronronne à la moindre caresse, heureux de partager des moments de tendresse.
+C’est un chat joyeux, affectueux et toujours en quête de contact. Il aime jouer, explorer et surtout se blottir contre ceux qu’il aime.
+Ronron cherche maintenant une famille pour la vie, où il pourra continuer à donner et recevoir tout l’amour dont il déborde.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/luna.jpg" alt="Chaton 35">
+        <div class="card-content"><h4>Luna</h4><p>Âge : 6 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p>Abandonnée lors du déménagement de son ancienne maîtresse, la petite Luna a connu la peur et la faim. Grâce au courage de sa maman et à ses frères et sœurs, elle a réussi à survivre malgré ce début de vie difficile.
+Aujourd’hui, prise en charge par l’association, Luna a enfin retrouvé la sécurité et découvre le bonheur d’être aimée. C’est une chatonne douce, câline et très joueuse, pleine de tendresse et de vitalité.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochaton/luna.jpg" alt="Chaton 35">
+        <div class="card-content"><h4>Batman</h4><p>Âge : 4 mois<br>Mâle<br><h4>Adoptée</h4></p><br><p></p></div>
+      </div>
+       <div class="card">
+        <img src="photochaton/luna.jpg" alt="Chaton 35">
+        <div class="card-content"><h4>Pêche</h4><p>Âge : 4 mois<br>Femelle<br><h4>Adoptée</h4></p><br><p></p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHIENS -->
+  <div class="tab-content" id="chiens">
+    <div class="grid">
+      <div class="card">
+        <img src="photochien/toreyto.jpg" alt="Chien 1">
+        <div class="card-content"><h4>Toreyto</h4><p>Âge : 3 ans<br>Mâle<br><h4>Adopté</h4></p><br><p>Cet American Bully a vécu dans une voiture avec son maître, et il a connu la vie difficile. Aujourd’hui, il rêve d’un foyer calme où il pourra enfin se sentir en sécurité. Très câlin et fidèle, il adore se blottir sur le canapé et profiter des moments de tendresse. Les longues balades ne sont pas sa tasse de thé, mais il saura vous offrir tout son amour et sa loyauté.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochien/pantoufle.jpg" alt="Chien 2">
+        <div class="card-content"><h4>pantoufle</h4><p>Âge : 2 ans<br>Mâle<br><h4>Adopté</h4></p><br><p>Pantoufle a été trouvé avec sa famille, ses frères et sœurs et leur maman. C’est un petit amour sur pattes, toujours prêt à recevoir des câlins et à jouer doucement. Il adore la compagnie humaine et saura remplir votre maison de tendresse et de moments complices.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochien/ruben.jpg" alt="Chien 3">
+        <div class="card-content"><h4>ruben</h4><p>Âge : 2 ans<br>Mâle<br><h4>Adopté</h4></p><br><p>Ruben a grandi avec ses frères et sœurs et leur maman avant d’être recueilli. C’est un chien tendre et très attachant, qui adore les câlins et les moments de proximité avec ses humains. Ruben est le compagnon parfait pour ceux qui cherchent un ami loyal et doux pour partager leur quotidien.</p></div>
+      </div>
+      <div class="card">
+        <img src="photochien/stella.jpg" alt="Chien 4">
+        <div class="card-content"><h4>stella</h4><p>Âge : 2 ans<br>Femelle<br><h4>Adoptée</h4></p><br><p>Stella a été trouvée avec ses frères et leur maman. C’est une chienne douce et câline, qui adore recevoir de l’amour et le rendre en retour. Elle saura illuminer votre quotidien par sa tendresse et son affection.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="evenements" style="padding:60px; background:#ffffff; text-align:center;">
+  <h2 style="font-size:32px; margin-bottom:20px;">📅 Nos événements</h2>
+  <p style="font-size:18px; margin-bottom:40px; max-width:800px; margin-left:auto; margin-right:auto;">
+    Retrouvez ici tous nos prochains événements pour soutenir l’association et rencontrer nos protégés 🐾
+  </p>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:30px; max-width:1000px; margin:0 auto;">
+    
+  <!-- Exemple d'événement -->
+    <div style="background:#f4f4f4; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:left;">
+      <h3 style="font-size:22px; margin-bottom:10px;">Collecte de Nourriture</h3>
+      <img src="photo/collecte 11 juil.jpg">
+      <p style="font-size:16px; margin-bottom:10px;"><strong>Date :</strong>11 juillet 2026</p>
+      <p style="font-size:16px; margin-bottom:15px;"><strong>Lieu :</strong>Intermarché Laragne</p>
+      <p style="font-size:15px; color:#444;"></p>
+    </div>
+</section>
+  <!-- Exemple d'événement -->
+    <div style="background:#f4f4f4; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:left;">
+      <h3 style="font-size:22px; margin-bottom:10px;">Collecte de Nourriture</h3>
+      <img src="photo/collecte 08 aout.jpg">
+      <p style="font-size:16px; margin-bottom:10px;"><strong>Date :</strong>08 Août 2026</p>
+      <p style="font-size:16px; margin-bottom:15px;"><strong>Lieu :</strong>Super U Sisteron</p>
+      <p style="font-size:15px; color:#444;"></p>
+    </div>
+</section>
+  <!-- Exemple d'événement -->
+    <div style="background:#f4f4f4; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:left;">
+      <h3 style="font-size:22px; margin-bottom:10px;">Collecte de Nourriture</h3>
+      <img src="photo/collecte 7 nov.jpg">
+      <p style="font-size:16px; margin-bottom:10px;"><strong>Date :</strong>07 Novembre 2026</p>
+      <p style="font-size:16px; margin-bottom:15px;"><strong>Lieu :</strong>Intermarché Laragne</p>
+      <p style="font-size:15px; color:#444;"></p>
+    </div>
+</section>
+
+
+<!-- AIDER -->
+<section id="aider" style="padding:60px; background:#f4f4f4; text-align:center;">
+  <h2 style="font-size:32px; margin-bottom:20px;">Comment nous aider ?</h2>
+  <p style="font-size:18px; margin-bottom:40px; max-width:800px; margin-left:auto; margin-right:auto;">
+    Notre association vit grâce à votre soutien 🙏.  
+    Vous pouvez nous aider de plusieurs façons : en faisant un don, en devenant bénévole, ou en soutenant notre boutique solidaire.
+  </p>
+
+  <!-- Onglets -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="dons">💝 Faire un don</button>
+    <button class="tab-btn" data-tab="benevole">🤝 Devenir bénévole</button>
+  </div>
+
+  <!-- Onglet DONS -->
+  <div class="tab-content active" id="dons">
+    <h3 style="font-size:24px; margin-bottom:10px;">💝 Faire un don</h3>
+    <p style="font-size:16px; margin-bottom:30px; max-width:700px; margin-left:auto; margin-right:auto;">
+      Chaque don, même le plus petit, permet de nourrir, soigner et offrir une nouvelle vie à nos protégés.  
+      Merci de tout cœur pour votre générosité ❤️
+    </p>
+
+    <div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap;">
+
+      <!-- Bouton HelloAsso -->
+      <a href="https://www.helloasso.com/associations/au-secours-des-animaux" target="_blank" 
+         style="background:#00A96E; color:white; padding:15px 30px; border-radius:8px; text-decoration:none; font-size:18px; font-weight:bold; transition:0.3s;">
+        Faire un don via HelloAsso
+      </a>
+    </div>
+  </div>
+
+  <!-- Onglet BÉNÉVOLE -->
+  <div class="tab-content" id="benevole">
+    <h3 style="font-size:24px; margin-bottom:10px;">🤝 Devenir bénévole</h3>
+    <p style="font-size:16px; margin-bottom:30px; max-width:700px; margin-left:auto; margin-right:auto;">
+      Vous aimez les animaux et souhaitez donner un peu de votre temps ?  
+      Rejoignez notre équipe de bénévoles pour participer aux sauvetages, soins, collectes et événements.  
+      Ensemble, nous pouvons faire la différence 🐾
+    </p>
+
+    <a href="#contact" 
+       style="background:#3cc4b8; color:white; padding:15px 30px; border-radius:8px; text-decoration:none; font-size:18px; font-weight:bold; transition:0.3s;">
+      Je veux devenir bénévole
+    </a>
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="visible">
+  <h2 class="section-title">Contactez-nous</h2>
+  <p class="section-subtitle">Pour toute question ou information, écrivez-nous.</p>
+  <p class="section-subtitle">Mail: secoursanimaux05@gmail.com</p>
+  <p class="section-subtitle">téléphone: 06-78-68-63-37</p>
+ 
+
+</section>
+
+<!-- RÉSEAUX SOCIAUX (sous contact) -->
+<section id="reseaux" style="text-align:center; padding:40px 20px; background:#f4f4f4;">
+  <h2 style="margin-bottom:20px; color:#333;">Suivez-nous sur les réseaux sociaux</h2>
+  <div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap;">
+    
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/share/16HvgpVQhN/" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#1877F2"><path d="M22.675 0h-21.35C.592 0 0 .592 0 1.325v21.351C0 23.408.592 24 1.325 24h11.495v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.463.098 2.794.142v3.24h-1.918c-1.504 0-1.796.715-1.796 1.763v2.31h3.588l-.467 3.622h-3.121V24h6.116c.732 0 1.324-.592 1.324-1.324V1.325C24 .592 23.408 0 22.675 0z"/></svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/ausecoursdesanimaux?utm_source=qr&igsh=MXJ0dmJ2NWprMW44OQ==" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 512 512" fill="#E1306C"><path d="M349.33 69.33H162.67C104.3 69.33 57.33 116.3 57.33 174.67v186.67c0 58.37 46.97 105.33 105.34 105.33h186.67c58.37 0 105.33-46.97 105.33-105.33V174.67c0-58.37-46.96-105.34-105.34-105.34zm69.34 292c0 38.33-31.01 69.34-69.34 69.34H162.67c-38.33 0-69.34-31.01-69.34-69.34V174.67c0-38.33 31.01-69.34 69.34-69.34h186.67c38.33 0 69.34 31.01 69.34 69.34v186.66z"/><path d="M256 164c-50.56 0-92 41.44-92 92s41.44 92 92 92 92-41.44 92-92-41.44-92-92-92zm0 152a60 60 0 110-120 60 60 0 010 120z"/><circle cx="390.67" cy="121.33" r="20"/></svg>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@au.secours.des.an6?_t=ZN_8zNFFVMFa&_r=1" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 448 512" fill="#000000"><path d="M448,209.1c-16.7,7.5-34.7,12.6-53.3,14.7v141.1c0,70.7-57.3,128-128,128-70.7,0-128-57.3-128-128s57.3-128,128-128c17.8,0,34.7,3.6,50.5,10.2V0h53.3C398.5,0,448,49.5,448,110.9V209.1z"/></svg>
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; <span id="year"></span> <strong>Au Secours Des Animaux</strong>. Tous droits réservés.</p>
+    <p> <span>site réalisé par <strong>Bocquet Lilou / Au Secours Des Animaux.</strong></span></p>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</footer>
+
+<!-- ====== SCRIPTS ====== -->
+<script>
+  // Onglets adoption
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      contents.forEach(c=>c.classList.remove('active'));
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Animation scroll
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {threshold:0.1});
+  sections.forEach(section => observer.observe(section));
+
+document.getElementById("contact-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let form = this;
+    let formData = new FormData(form);
+    let messageBox = document.getElementById("form-message");
+
+    fetch("send_mail.php", { method: "POST", body: formData })
+    .then(response => response.text())
+    .then(data => {
+        messageBox.textContent = data;
+        messageBox.style.color = data.includes("✅") ? "green" : "red";
+        if(data.includes("✅")) form.reset();
+    })
+    .catch(() => {
+        messageBox.textContent = "❌ Une erreur est survenue. Merci de réessayer.";
+        messageBox.style.color = "red";
+    });
+});
+</script>
+
+</body>
+</html>
